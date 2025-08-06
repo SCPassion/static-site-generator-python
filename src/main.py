@@ -1,6 +1,7 @@
 from htmlnode import HTMLNode
 from textnode import TextNode, TextType
 from leafnode import LeafNode
+from parentnode import ParentNode
 
 def main():
     text_node = TextNode("This is some anchor text", TextType.LINK, "https://www.boot.dev")
@@ -12,8 +13,11 @@ def main():
 })
     print(html_node)
 
-    node = LeafNode("p", "Hello, world!", {"class": "text-red-500"})
-    print(node.to_html())
+    leadnode = LeafNode("p", "Hello, world!", {"class": "text-red-500"})
+    print(leadnode.to_html())
+
+    parent_node = ParentNode("div", [leadnode])
+    print(parent_node.to_html())
 
 if __name__ == "__main__":
     main()
