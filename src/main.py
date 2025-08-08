@@ -4,6 +4,8 @@ from textnode import TextNode, TextType
 from leafnode import LeafNode
 from parentnode import ParentNode
 from inline_markdown import extract_markdown_images, extract_markdown_links
+from inline_markdown import text_to_textnodes
+from block_markdown import markdown_to_blocks
 
 def main():
 #     text_node = TextNode("This is some anchor text", TextType.LINK, "https://www.boot.dev")
@@ -33,11 +35,26 @@ def main():
     #text = "This is text with a link [to boot dev](https://www.boot.dev) and [to youtube](https://www.youtube.com/@bootdotdev)"
     #print(extract_markdown_links(text))
 
-    node = TextNode(
-        "This is text with an ![image](https://i.imgur.com/zjjcJKZ.png) and another ![second image](https://i.imgur.com/3elNhQu.png)",
-        TextType.TEXT,
-    )
-    new_nodes = split_nodes_image([node])
+    # node = TextNode(
+    #     "This is text with an ![image](https://i.imgur.com/zjjcJKZ.png) and another ![second image](https://i.imgur.com/3elNhQu.png)",
+    #     TextType.TEXT,
+    # )
+    # new_nodes = split_nodes_image([node])
+
+    # text = """This is **text** with an _italic_ word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://boot.dev)"""
+    # nodes = text_to_textnodes(text)
+    # print(nodes)
+
+    md = """
+                This is **bolded** paragraph
+
+                This is another paragraph with _italic_ text and `code` here
+                This is the same paragraph on a new line
+
+                - This is a list
+                - with items
+                """
+    markdown_to_blocks(md)
 
 
 if __name__ == "__main__":
