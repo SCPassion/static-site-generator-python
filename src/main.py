@@ -1,5 +1,6 @@
 from htmlnode import HTMLNode
 from inline_markdown import split_nodes_delimiter, split_nodes_image
+from markdown_to_html_node import markdown_to_html_node
 from textnode import TextNode, TextType
 from leafnode import LeafNode
 from parentnode import ParentNode
@@ -46,15 +47,15 @@ def main():
     # print(nodes)
 
     md = """
-                This is **bolded** paragraph
+This is **bolded** paragraph
+text in a p
+tag here
 
-                This is another paragraph with _italic_ text and `code` here
-                This is the same paragraph on a new line
+This is another paragraph with _italic_ text and `code` here
 
-                - This is a list
-                - with items
-                """
-    markdown_to_blocks(md)
+"""
+
+    markdown_to_html_node(md)
 
 
 if __name__ == "__main__":
